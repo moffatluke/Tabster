@@ -27,7 +27,7 @@ export default function Upload() {
       formData.append('file', selectedFile); // Look at /server/routes/upload.py
       // The upload.py file uploads a 'file' thus I am appending to that file here
 
-      const uploadResponse = await fetch('http://localhost:5000/upload', {
+      const uploadResponse = await fetch('http://localhost:5001/upload', {
         method: 'POST',
         body: formData
       });
@@ -35,7 +35,7 @@ export default function Upload() {
       if (!uploadResponse.ok) throw new Error('Upload failed');
 
       const uploadData = await uploadResponse.json();
-      const processResponse = await fetch('http://localhost:5000/convert', {
+      const processResponse = await fetch('http://localhost:5001/convert', {
         // Handle the processing of the api.
         method: 'POST',
         headers: {
